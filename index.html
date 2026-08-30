@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Portfolio Project API</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+</style>
+    <link
+  href="https://cdn.jsdelivr.net/npm/remixicon@4.9.0/fonts/remixicon.css"
+  rel="stylesheet"
+/>
+</head>
+<body>
+
+ 
+    
+    <nav class="navbar" id="weather-navbar">
+        <div class="navbar-darkmode-wrapper">
+          <div class="nav-toggle-class">
+              <i class="ri-circle-fill"></i>
+          </div>
+          <div class="nav-toggle-text">
+            <h3>Dark Mode</h3>
+          </div>
+        </div>
+        <div class="nav-search">
+          <div class="nav-search-icon"><img src="assests/search 1.svg" alt=""></div>
+             <input type="search"  class="search-cantainer" id="searchlocations" placeholder="Search for your preffered city...">
+        </div>
+
+        <button class="nav-location-BTN" id="Get-CurrentLocation" type="button"> 
+	        <div class="location-button-svg-wrapper">
+            <img src="assests/current location icon.svg" alt="">
+          </div>
+            <h3>Current Location</h3> 
+        </button>
+    </nav>
+    
+    <main id="weather-dashboard" style="display: none;">
+  <div class="weather-grid-container">
+    <div class="time-container">
+      <div class="time-detail-wrapper">
+        <h3 class="city-title">Athens</h3>
+        <div class="time-wrapper">
+          <h2 class="time-display">09:03</h2>
+          <p class="date-display">Thursday, 31 Aug</p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="details-container">
+    <div class="temperature-details">
+      <div class="main-temp">
+       <span class="temp-value">24°C</span>
+        <div class="feels-like-wrapper">
+          <p>Feels like:</p>
+        <span class="feels-val">22°C</span>
+        </div>
+      </div>
+      <div class="sunrise-sunset-wrapper">
+      <div class="sun-rise-details">
+        <div class="sunrise-svg-icon">
+          <img class="metric-icon" src="weather types svg/sunrise-time static.svg" alt="">
+        </div>
+        <div class="sunrise-detail-text">
+         <span class="sunrise-val-text">Sunrise</span>
+         <p id="sunrise-time">06:37 AM</p>
+        </div>
+      </div>
+      <div class="sun-set-details">
+        <div class="sunset-svg-icon">
+          <img class="metric-icon" src="weather types svg/sunset-time static.svg" alt="">
+        </div>
+        <div class="sunset-detail-text">
+         <span class="sunset-val-text">Sunset</span>
+         <p id="sunset-time">20:37 AM</p>
+        </div>
+  </div>
+      </div>
+    </div>
+    <div class="weather-visual">
+      <div class="sunny-svg-icon">
+        <img id="weather-icon" src="weather types svg/clear static main dashboard.svg" alt="Weather Icon">
+      </div>
+         <span id="weather-condition-text" class="weather-condition-text">Sunny</span>
+    </div>
+    <div class="weather-metrics">
+      <div class="humidity-metric">
+        <div class="humidity-svg-wrapper">
+          <img src="weather types svg/humidity.svg" alt="">
+        </div>
+            <div class="humidity-details">
+            <span class="humidity-val">41%</span>
+            <p>Humidity</p>
+         </div>
+      </div>
+
+      <div class="wind-metric">
+         <div class="wind-svg-wrapper">
+          <img class="metric-icon" src="weather types svg/wind.svg" alt="">
+        </div>
+            <div class="wind-details">
+            <span class="wind-val">2km/h</span>
+            <p>Wind Speed</p>
+         </div>
+      </div>
+
+      <div class="pressure-metric">
+         <div class="pressure-svg-wrapper">
+          <img class="metric-icon" src="weather types svg/pressure.svg" alt="">
+        </div>
+            <div class="pressure-details">
+            <span class="pressure-val">997hPa</span>
+            <p>Pressure</p>
+         </div>
+      </div>
+
+      <div class="uv-metric">
+          <div class="uv-svg-wrapper">
+          <img src="weather types svg/uv.svg" alt="">
+        </div>
+          <div class="uv-details">
+            <span class="uv-val">8</span>
+            <p>UV</p>
+         </div>
+      </div>
+    </div>
+    </div>
+  </div>
+ 
+   <div class="forcastgrid-cantainer">
+     <section class="five-days-Forecast-container" id="Forecastdays-container" aria-labelledby="five-day-forecast-title">
+       <!-- <div class="forecast-wrapper">
+         <h2 class="forecast-title">5 Days Forecast:</h2>
+          </div>
+             <div class="forcast-details">
+               <div class="forecast-icon-svg">
+                <img src="weather types svg/clouds 1.svg" alt="">
+              </div>
+                   <span class="forecast-tem-val">20°C</span>
+                   <div class="forecast-date-info">
+                <span class="forecast-date">Friday, 1 Sep</span>
+             </div>
+           </div> -->
+     </section>
+
+         <section class="hourly-forecast-cantainer" id="hourly-forecast-cantainer" aria-labelledby="hourly-forecast-title">
+          <h2  id="hourly-forecast-title" class="Hourly-tem-text">Hourly Forecast:</h2>
+            <div class="hourly-cards-wrapper" id="hourly-cards-wrapper">
+<!-- 
+                 <div class="hourly-forecast-layout">
+                <span class="hourly-tem-time">12:00</span>
+                <div class="hourly-temp-wrapper">
+                  <div class="hourly-svg-wrapper">
+                    <img src="weather types svg/sunny.svg" alt="">
+                  </div>
+                    <span class="Hourly-tem-val">26°C</span>
+                  </div>
+                      <div class="hourly-wind-wrapper">
+                    <div class="hourly-nav-svg-wrapper">
+                   <img src="weather types svg/navigation 1.svg" alt="">
+                 </div>
+                <span class="Hourly-wind-val">3km/h</span>
+               </div>  
+             </div> -->
+          </div>
+      </section>
+   </div>
+</main>
+
+<script type="module" src="./js/main.js"></script>
+</body>
+</html>
